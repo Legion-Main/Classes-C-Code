@@ -1,3 +1,5 @@
+using System;
+
 Dog dog1 = new Dog();
 
 dog1.Name = "Tabor";
@@ -28,37 +30,53 @@ cat2.Name = "Tiny";
 cat2.Breed = "Domestic Shorthair";
 cat2.Age = 3;
 
+/*Cat cat2 = new Cat();
+
+cat2.Name = "Tiny";
+cat2.Breed = "Domestic Shorthair";
+cat2.Age = 3;
+
+Cat cat2 = new Cat();
+
+cat2.Name = "Tiny";
+cat2.Breed = "Domestic Shorthair";
+cat2.Age = 3;*/
+
 Console.WriteLine(dog1.Name);
 Console.WriteLine(dog2.Name);
 Console.WriteLine(dog3.Name);
 Console.WriteLine(cat1.Name);
 
-dog1.BreedCheck();
-dog2.BreedCheck();
-dog3.BreedCheck();
-
-dog1.AgeCheck();
-dog2.AgeCheck();
-dog3.AgeCheck();
-
-cat1.BreedCheck();
-cat1.AgeCheck();
-
-cat1.Meow();
-
-dog1.Bark();
-dog2.Bark();
-dog3.Bark();
-
-cat1.Sleep();
+dog1.DisplayInfo();
+dog2.DisplayInfo();
+dog3.DisplayInfo();
 cat1.DisplayInfo();
+cat2.DisplayInfo();
+
+cat1.EnergyTest();
+cat1.Sleep();
+cat1.Eat();
+cat1.Play();
+cat1.EnergyTest();
+cat1.Play();
+cat1.Play();
+cat1.Play();
+cat1.Play();
+cat1.Play();
+cat1.EnergyTest();
+cat1.Sleep();
+cat1.Eat();
+cat1.EnergyTest();
+
+//bird1.DisplayInfo();
+//bird2.DisplayInfo();
 
 class Cat
 {
     public string Name = "";
     public string Breed = "";
     public int Age;
-    public int Energy;
+    public int Energy = 10;
     
     public void Meow()
     {
@@ -72,13 +90,45 @@ class Cat
     {
         Console.WriteLine(Name + " is " + Age + " Years Old");
     }
-    //Changed to sleep from a run method. Will tie into energy. Once I teach myself this aspect of the language.
+    public void Play()
+    {
+        Console.WriteLine(Name + " plays with you (-1 Energy)");
+        Energy = Energy-1;
+    }
+    public void Eat()
+    {
+        if (Energy < 10)
+        {
+            Console.WriteLine(Name + " Eats Food (+1 Energy)");
+            Energy = Energy + 1;
+        }
+        else
+        {
+            Console.WriteLine(Name + " isn't hungry right now");
+        }
+    }
+    //Changed to sleep from a run method. Will tie into energy. 
     public void Sleep()
     {
-        Console.WriteLine(Name + " slumbers sleepily.");
+        if (Energy < 10)
+        {
+            Console.WriteLine(Name + " slumbers sleepily (+2 Energy)");
+            Energy = Energy + 2;
+        }
+        else
+        {
+            Console.WriteLine(Name + " isn't tired right now");
+        }
+    }
+    public void EnergyTest()
+    {
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Energy: " + Energy);
     }
     public void DisplayInfo()
     {
+        //Putting the separators on top. Why? I don't know which would be better. Would it make that much of a difference? This is beyond the scope.
+        Console.WriteLine("------------------------");
         Console.WriteLine("ANIMAL: CAT");
         Console.WriteLine("NAME: " + Name);
         Console.WriteLine("BREED: " + Breed);
@@ -90,7 +140,7 @@ class Dog
     public string Name = "";
     public string Breed = "";
     public int Age;
-    public int Energy;
+    public int Energy = 10;
 
     public void Bark()
     {
@@ -106,17 +156,32 @@ class Dog
     }
     public void Run()
     {
-        Console.WriteLine(Name + " runs off");
+        Console.WriteLine(Name + " runs off (-1 Energy)");
+        Energy = Energy-1;
+    }
+    public void Eat()
+    {
+        Console.WriteLine(Name + " Eats Food");
+        if (Energy < 10)
+        {
+                Energy = Energy + 1;
+        }
+    }
+    public void EnergyTest()
+    {
+        Console.WriteLine("------------------------");
+        Console.WriteLine("Energy: " + Energy);
     }
     public void DisplayInfo()
     {
+        Console.WriteLine("------------------------");
         Console.WriteLine("ANIMAL: DOG");
         Console.WriteLine("NAME: " + Name);
         Console.WriteLine("BREED: " + Breed);
         Console.WriteLine("AGE: " + Age);
     }
 }
-class Bird
+/*class Bird
 {
     //I am omitting Breed as a bird attribute. I don't know birds.
     public string Name = "";
@@ -127,10 +192,7 @@ class Bird
     {
         Console.WriteLine(Name + ": Chirp! Chirp chirp!");
     }
-    public void BreedCheck()
-    {
-        Console.WriteLine(Name + " is a " + Breed);
-    }
+    //Accidentally was throwing errors keeping breedcheck with no breed attribute
     public void AgeCheck()
     {
         Console.WriteLine(Name + " is " + Age + " YearsOld");
@@ -141,9 +203,9 @@ class Bird
     }
     public void DisplayInfo()
     {
+        Console.WriteLine("------------------------");
         Console.WriteLine("ANIMAL: BIRD");
         Console.WriteLine("NAME: " + Name);
-        Console.WriteLine("BREED: " + Breed);
         Console.WriteLine("AGE: " + Age);
     }
-}
+}*/
