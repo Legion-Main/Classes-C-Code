@@ -53,20 +53,29 @@ dog3.DisplayInfo();
 cat1.DisplayInfo();
 cat2.DisplayInfo();
 
-cat1.EnergyTest();
-cat1.Sleep();
-cat1.Eat();
-cat1.Play();
-cat1.EnergyTest();
-cat1.Play();
-cat1.Play();
-cat1.Play();
-cat1.Play();
-cat1.Play();
-cat1.EnergyTest();
-cat1.Sleep();
-cat1.Eat();
-cat1.EnergyTest();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Play();
+dog1.Sleep();
+dog1.Sleep();
+dog1.Sleep();
+dog1.Sleep();
+dog1.Sleep();
+dog1.Sleep();
+dog1.Sleep();
+dog1.Sleep();
+dog1.Sleep();
+dog1.Sleep();
+dog1.Sleep();
 
 //bird1.DisplayInfo();
 //bird2.DisplayInfo();
@@ -90,21 +99,29 @@ class Cat
     {
         Console.WriteLine(Name + " is " + Age + " Years Old");
     }
+    //I established a ceiling, so I may as well establish a floor
     public void Play()
     {
-        Console.WriteLine(Name + " plays with you (-1 Energy)");
-        Energy = Energy-1;
+        if (Energy > 0)
+        {
+            Console.WriteLine(">" + Name + " plays with you (-1 Energy)");
+            Energy = Energy-1;
+        }
+        else
+        {
+            Console.WriteLine(">" + Name + " is too tired to play (No Energy)");
+        }
     }
     public void Eat()
     {
         if (Energy < 10)
         {
-            Console.WriteLine(Name + " Eats Food (+1 Energy)");
+            Console.WriteLine(">" + Name + " Eats Food (+1 Energy)");
             Energy = Energy + 1;
         }
         else
         {
-            Console.WriteLine(Name + " isn't hungry right now");
+            Console.WriteLine(">" + Name + " isn't hungry right now (Max Energy)");
         }
     }
     //Changed to sleep from a run method. Will tie into energy. 
@@ -112,12 +129,12 @@ class Cat
     {
         if (Energy < 10)
         {
-            Console.WriteLine(Name + " slumbers sleepily (+2 Energy)");
+            Console.WriteLine(">" + Name + " slumbers sleepily (+2 Energy)");
             Energy = Energy + 2;
         }
         else
         {
-            Console.WriteLine(Name + " isn't tired right now");
+            Console.WriteLine(">" + Name + " isn't tired right now (Max Energy)");
         }
     }
     public void EnergyTest()
@@ -156,15 +173,51 @@ class Dog
     }
     public void Run()
     {
-        Console.WriteLine(Name + " runs off (-1 Energy)");
-        Energy = Energy-1;
+        if (Energy > 0)
+        {
+            Console.WriteLine(">" + Name + " runs around (-1 Energy)");
+            Energy = Energy-1;
+        }
+        else
+        {
+            Console.WriteLine(">" + Name + " is too tired to run around (No Energy)");
+        }
+    }
+    public void Play()
+    {
+        if (Energy > 0)
+        {
+            Console.WriteLine(">" + Name + " plays with you (-1 Energy)");
+            Energy = Energy-1;
+        }
+        else
+        {
+            Console.WriteLine(">" + Name + " is too tired to play (No Energy)");
+        }
     }
     public void Eat()
     {
-        Console.WriteLine(Name + " Eats Food");
         if (Energy < 10)
         {
-                Energy = Energy + 1;
+            Console.WriteLine(">" + Name + " Eats Food (+1 Energy)");
+            Energy = Energy + 1;
+        }
+        else
+        {
+            Console.WriteLine(">" + Name + " isn't hungry right now (Max Energy)");
+        }
+    }
+    //Changed to sleep from a run method. Will tie into energy. 
+    public void Sleep()
+    {
+        if (Energy < 10)
+        {
+            Console.WriteLine(">" + Name + " slumbers sleepily (+2 Energy)");
+            Energy = Energy + 2;
+        }
+        else
+        {
+            Console.WriteLine(">" + Name + " isn't tired right now (Max Energy)");
         }
     }
     public void EnergyTest()
